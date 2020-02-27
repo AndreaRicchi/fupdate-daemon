@@ -3,15 +3,16 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QDir>
+#include <QProcess>
 #include <QStorageInfo>
 #include <QTimer>
 
-static void startUpdate(const QString &swuPath)
+void startUpdate(const QString &swuPath)
 {
     const auto cmd = "swupdate -i " + swuPath + " && sync && reboot";
 
 #ifdef Q_PROCESSOR_ARM
-    system(cmd.toUtf8().data());
+    QProcess().start(cmd.toUtf8().data());
 #else
     qInfo() << cmd;
 #endif
