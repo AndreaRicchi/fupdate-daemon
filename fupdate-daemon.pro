@@ -5,6 +5,8 @@ CONFIG -= app_bundle
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
+include($$PWD/src/qdevicewatcher.pri)
+
 SOURCES += \
         $$PWD/src/main.cpp
 
