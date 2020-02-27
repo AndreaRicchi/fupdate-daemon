@@ -18,10 +18,3 @@ if [ -f ".gitmodules" ]; then
 	git submodule foreach --recursive git submodule update || (echo "Fail" && exit 1)
 	echo "Done"
 fi
-
-if [ -d "scripts/patches" ]; then
-	printf "==> Applying QDeviceWatcher patch: "
-	cd "src/qdevicewatcher"
-	git diff --quiet && (git apply "$SCRIPTS_DIR/patches/qdevicewatcher-prints.patch" && echo "OK") \
-		|| (echo "QDeviceWatcher dirty! Skipping")
-fi	
